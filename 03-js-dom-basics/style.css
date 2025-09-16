@@ -84,7 +84,6 @@ button:disabled { opacity: .6; cursor: not-allowed; }
   transition: transform 4s cubic-bezier(.2,.65,0,1);
   will-change: transform;
 }
-
 #wheel .label {
   position: absolute;
   left: 50%; top: 50%;
@@ -95,11 +94,12 @@ button:disabled { opacity: .6; cursor: not-allowed; }
   text-shadow: 0 1px 2px rgba(0,0,0,.7);
   pointer-events: none;
   user-select: none;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
-
-
-#wheel .label.highlight { color: #fff799; text-shadow: 0 0 10px rgba(255,247,153,.9); }
+#wheel .label.highlight {
+  color: #fff799;
+  text-shadow: 0 0 10px rgba(255,247,153,.9);
+}
 
 .pointer {
   position: absolute; left: 50%; top: -10px; transform: translateX(-50%);
@@ -108,6 +108,17 @@ button:disabled { opacity: .6; cursor: not-allowed; }
   border-right: 14px solid transparent;
   border-bottom: 20px solid #ffd166;
   filter: drop-shadow(0 4px 6px rgba(0,0,0,.4));
+}
+
+#winOverlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  -webkit-mask: radial-gradient(circle, transparent 0 85%, #000 85% 100%);
+          mask: radial-gradient(circle, transparent 0 85%, #000 85% 100%);
 }
 
 .history { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }

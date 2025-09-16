@@ -1,19 +1,67 @@
-const FIXED_SPINS = 6;       
-const SPIN_MS = 4000;           
-const LABEL_RADIUS_RATIO = 0.78;  
+const FIXED_SPINS = 6;
+const SPIN_MS = 4000;
+const LABEL_RADIUS_RATIO = 0.78;
+
 const wheelNumbers = [
   0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10,
   5, 24, 16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26
 ];
 const reds = new Set([32,19,21,25,34,27,36,30,23,5,16,1,14,9,18,7,12,3]);
-const colorOf = n => (n === 0 ? "#0db35e" : reds.has(n) ? "#d54040" : "#16191f");
+const colorOf = n => (reds.has(n) ? "#d54040" : "#16191f");
+
 const wheel = document.getElementById("wheel");
 const spinBtn = document.getElementById("spinBtn");
 const betInput = document.querySelector("#betInput");
 const resultEl = document.querySelector("#result");
 const historyEl = document.getElementById("history");
+
+
+const winOverlay = document.createElement("div");
+winOverlay.id = "winOverlay";
+wheel.appendChild(winOverlay);
+
 const slotCount = wheelNumbers.length;
 const sliceDeg = 360 / slotCount;
+
+let deg = 0;
+const gradientParts = [];
+wheelNumbers.forEach(num => {
+  gradientParts.push(`${colorOf(num)} ${deg}deg ${deg + sliceDeg}deg`);
+  deg += sliceDeg;
+});
+wheel.style.background = `conic-gradient(${gradientParts.join(",")})`;
+
+const labels = [];
+wheelNumbers.forEach(num => {
+  const span = document.createElement("span");
+  span.className = "label";
+  span.textContent = String(num);
+  span.style.whiteSpace = "nowrap";
+  wheel.appendChild(span);
+  labels.push(span);
+});
+
+function layoutLabels() {
+  const rect = wheel.getBoundingClientRect();
+  const R = rect.width / 2;
+  const labelR = R * LABEL_RADIUS_RATIO;
+  const thetaRad = (Math.PI / 180) * sliceDeg;
+  const arc = labelR * thetaRad;
+  const fontPx = Math.max(10, Math.min(16, Math.floor(arc * 0.55)));
+  labels.forEach((span, i) => {
+    const center = i * sliceDeg + sliceDeg / 2;
+    span.style.fontSize = `${fontPx}px`;
+    span.style.transform =
+      `translate(-50%, -50%) rotate(${center}deg) translate(0, -${labelR}px) rotate(${-center}deg)`;
+  });
+}
+layoutLabels();
+let resizeRAF;
+window.addEventListener("resize", () => {
+  cancelAnimationFrame(resizeRAF);
+  resizeRAF = requestAnimationFrame(layoutLabels);
+});
+
 const loseBank = [
   "Better luck next time!",
   "You just lost the house!",
@@ -24,47 +72,6 @@ const loseBank = [
   "Guess who's getting a divorce!",
   "You didn't want to retire, did you?"
 ];
-
-let deg = 0;
-const gradientParts = [];
-wheelNumbers.forEach((num) => {
-  gradientParts.push(`${colorOf(num)} ${deg}deg ${deg + sliceDeg}deg`);
-  deg += sliceDeg;
-});
-wheel.style.background = `conic-gradient(${gradientParts.join(",")})`;
-
-const labels = [];
-wheelNumbers.forEach((num) => {
-  const span = document.createElement("span");
-  span.className = "label";
-  span.textContent = String(num);
-  span.style.whiteSpace = "nowrap"; 
-  wheel.appendChild(span);
-  labels.push(span);
-});
-
-function layoutLabels() {
-  const rect = wheel.getBoundingClientRect();
-  const R = rect.width / 2;                     
-  const labelR = R * LABEL_RADIUS_RATIO;        
-  const thetaRad = (Math.PI / 180) * sliceDeg;   
-  const arc = labelR * thetaRad;                
-  const fontPx = Math.max(10, Math.min(16, Math.floor(arc * 0.55)));
-
-  labels.forEach((span, i) => {
-    const centerDeg = i * sliceDeg + sliceDeg / 2;
-    span.style.fontSize = `${fontPx}px`;
-    span.style.transform =
-      `translate(-50%, -50%) rotate(${centerDeg}deg) translate(0, -${labelR}px) rotate(${-centerDeg}deg)`;
-  });
-}
-layoutLabels();
-
-let resizeRAF;
-window.addEventListener("resize", () => {
-  cancelAnimationFrame(resizeRAF);
-  resizeRAF = requestAnimationFrame(layoutLabels);
-});
 
 let bgTimeout;
 function pulseBackground(color) {
@@ -98,11 +105,15 @@ function spin() {
 
   const winningIndex = Math.floor(Math.random() * slotCount);
   const winningNumber = wheelNumbers[winningIndex];
+
   const centerAngle = winningIndex * sliceDeg + sliceDeg / 2;
   const targetRotation = FIXED_SPINS * 360 + (360 - centerAngle);
 
   spinBtn.disabled = true;
   labels.forEach(l => l.classList.remove("highlight"));
+  winOverlay.style.opacity = "0";
+  winOverlay.style.background = "none";
+
   prepSpinFromZero();
   requestAnimationFrame(() => {
     wheel.style.transform = `rotate(${targetRotation}deg)`;
@@ -114,6 +125,12 @@ function spin() {
     finished = true;
 
     labels[winningIndex].classList.add("highlight");
+
+    const startD = winningIndex * sliceDeg;
+    const endD = startD + sliceDeg;
+    winOverlay.style.background =
+      `conic-gradient(transparent 0deg ${startD}deg, rgba(24,199,126,0.95) ${startD}deg ${endD}deg, transparent ${endD}deg 360deg)`;
+    winOverlay.style.opacity = "1";
 
     const didWin = bet === winningNumber;
     if (didWin) {
