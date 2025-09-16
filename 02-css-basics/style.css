@@ -1,4 +1,3 @@
-/* ===== Base / Theme ===== */
 :root{
   --bg: #f5f7fb;
   --surface: #ffffff;
@@ -17,18 +16,16 @@
 html, body { height: 100%; }
 
 body{
-  margin: 0; /* customized page margins */
+  margin: 0; 
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
   color: var(--text);
   background: var(--bg);
   line-height: 1.65;
 }
 
-/* Utility */
 .container{ max-width: 1024px; margin-inline:auto; padding: 1.25rem; }
 .flow > * + *{ margin-top: 1rem; }
 
-/* ===== Header / Nav (Flexbox) ===== */
 .site-header{
   background: linear-gradient(90deg, var(--brand), var(--brand-2));
   color: #fff;
@@ -49,7 +46,6 @@ body{
 .nav-link:hover{ background: rgba(255,255,255,.18); transform: translateY(-1px); }
 .nav-link.is-active{ background: rgba(0,0,0,.18); }
 
-/* ===== Sections ===== */
 .section{
   background: var(--surface);
   margin: 1rem 0;
@@ -58,16 +54,13 @@ body{
 }
 .section--alt{ background: var(--surface-alt); }
 
-/* Headings */
 .page-title{ margin: 0 0 .5rem; text-align: center; font-size: clamp(1.8rem, 3.2vw, 3rem); }
 h2{ font-size: clamp(1.3rem, 2.4vw, 2rem); margin: 0; }
 h3{ margin: 0; font-size: 1.1rem; }
 
-/* Paragraph + lists */
 p{ margin: 0; }
 ul{ margin: .5rem 0 0; }
 
-/* Links styled as buttons */
 .button{
   display:inline-block; border:1px solid var(--brand-2);
   background: var(--brand-2); color:#fff; text-decoration:none;
@@ -77,30 +70,28 @@ ul{ margin: .5rem 0 0; }
 .button:hover{ transform: translateY(-2px); box-shadow: var(--shadow); }
 .button--ghost{ background: transparent; color: var(--brand-2); }
 
-/* ===== Media / Cards / Gallery ===== */
 img{ width:100%; height:auto; display:block; border-radius: 12px; }
 
 .grid{
-  display:grid;                     /* grid layout */
+  display:grid;                     
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
 }
 
 .card{
-  background:#fff;                  /* the white card panel */
-  border: 2px solid var(--border);  /* borders */
-  padding: .75rem;                  /* padding */
+  background:#fff;                  
+  border: 2px solid var(--border);  
+  padding: .75rem;                  
   border-radius: 14px;
   box-shadow: 0 3px 12px rgba(0,0,0,.06);
   transition: transform .2s ease, box-shadow .2s ease;
 }
-.card:hover{                         /* hover styles */
+.card:hover{                         
   transform: translateY(-4px);
   box-shadow: 0 10px 26px rgba(0,0,0,.12);
 }
 
-/* Make the rotated Nivah asset fill the card just like terra_world_map */
-.card--map{ overflow:hidden; }       /* safety in case of oversized images */
+.card--map{ overflow:hidden; }      
 .card--map .map--nivah{
   width: 100%;
   height: auto;
@@ -108,18 +99,16 @@ img{ width:100%; height:auto; display:block; border-radius: 12px; }
   object-fit: initial;
 }
 
-/* ===== Footer ===== */
 .site-footer{
-  background: #0f172a;              /* contrasting background */
+  background: #0f172a;              
   color: #cbd5e1;
-  text-align:center;                 /* centered text */
+  text-align:center;                
   padding: 2rem 1rem;
   margin-top: 2rem;
   box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
 }
 .footnote{ margin: 0; font-size: .95rem; color: #cbd5e1; }
 
-/* ===== Unique IDs ===== */
 #intro{ background: linear-gradient(180deg, var(--surface-alt), var(--surface)); }
 #gallery{ border: 1px solid var(--border); }
 #more .subsection{ background: #fff; border:1px solid var(--border); border-radius: 12px; padding: 1rem; margin-top: 1rem; }
