@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Roulette</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="javascript.js" defer></script
+</head>
+<body>
+  <header class="site-header">
+    <h1>Roulette Rush</h1>
+    <p>Pick a number (0–36), spin the wheel, and test your luck.</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <h2>Place Your Bet</h2>
+      <label for="betInput" class="sr-only">Your number (0–36)</label>
+      <input id="betInput" type="number" min="0" max="36" placeholder="Enter 0–36" />
+      <button id="spinBtn" aria-label="Spin the wheel">Spin 🎲</button>
+      <p id="result" class="result" aria-live="polite"></p>
+      <div class="legend">
+        <span class="chip chip--win">Win</span>
+        <span class="chip chip--lose">Lose</span>
+      </div>
+    </section>
+
+    <section class="table">
+      <div class="wheel-wrap" aria-label="Roulette wheel" role="img">
+        <div id="wheel"></div>
+        <div class="pointer" aria-hidden="true"></div>
+      </div>
+      <p class="hint">The triangle is the pointer — whichever slot stops there is the winning number.</p>
+    </section>
+
+    <aside class="panel">
+      <h2>Spin History</h2>
+      <ul id="history" class="history" aria-live="polite"></ul>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <small>Built for DOM practice: query, create, style, and animate.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
