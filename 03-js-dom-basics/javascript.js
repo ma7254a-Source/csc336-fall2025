@@ -1,50 +1,91 @@
+const FIXED_SPINS = 6;       
+const SPIN_MS = 4000;           
+const LABEL_RADIUS_RATIO = 0.78;  
 const wheelNumbers = [
   0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10,
   5, 24, 16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26
 ];
 const reds = new Set([32,19,21,25,34,27,36,30,23,5,16,1,14,9,18,7,12,3]);
 const colorOf = n => (n === 0 ? "#0db35e" : reds.has(n) ? "#d54040" : "#16191f");
-
-const wheel = document.getElementById("wheel");             
+const wheel = document.getElementById("wheel");
 const spinBtn = document.getElementById("spinBtn");
-const betInput = document.querySelector("#betInput");        
+const betInput = document.querySelector("#betInput");
 const resultEl = document.querySelector("#result");
 const historyEl = document.getElementById("history");
 const slotCount = wheelNumbers.length;
-const slice = 360 / slotCount;
+const sliceDeg = 360 / slotCount;
+const loseBank = [
+  "Better luck next time!",
+  "You just lost the house!",
+  "Annnnd there goes junior's college fund.",
+  "Lady Luck left the chat.",
+  "Close! But no cigar.",
+  "You should totally spin again",
+  "Guess who's getting a divorce!",
+  "You didn't want to retire, did you?"
+];
 
 let deg = 0;
 const gradientParts = [];
 wheelNumbers.forEach((num) => {
-  const start = deg;
-  const end = deg + slice;
-  gradientParts.push(`${colorOf(num)} ${start}deg ${end}deg`);
-  deg = end;
+  gradientParts.push(`${colorOf(num)} ${deg}deg ${deg + sliceDeg}deg`);
+  deg += sliceDeg;
 });
 wheel.style.background = `conic-gradient(${gradientParts.join(",")})`;
 
 const labels = [];
-wheelNumbers.forEach((num, i) => {
-  const centerDeg = i * slice + slice / 2;
+wheelNumbers.forEach((num) => {
   const span = document.createElement("span");
   span.className = "label";
   span.textContent = String(num);
-  span.style.transform =
-    `translate(-50%, -50%) rotate(${centerDeg}deg) translate(0, calc(-42%)) rotate(${-centerDeg}deg)`;
+  span.style.whiteSpace = "nowrap"; 
   wheel.appendChild(span);
   labels.push(span);
 });
 
-let lastRotation = 0;
-const loseBank = [
-  "Better luck next time!",
-  "You just lost the house!",
-  "Man you suck at this.",
-  "Lady Luck left the chat.",
-  "Close! But no cigar.",
-  "You should totally hit it again.",
-  "Annnd there goes junior's college fund.",
-];
+function layoutLabels() {
+  const rect = wheel.getBoundingClientRect();
+  const R = rect.width / 2;                     
+  const labelR = R * LABEL_RADIUS_RATIO;        
+  const thetaRad = (Math.PI / 180) * sliceDeg;   
+  const arc = labelR * thetaRad;                
+  const fontPx = Math.max(10, Math.min(16, Math.floor(arc * 0.55)));
+
+  labels.forEach((span, i) => {
+    const centerDeg = i * sliceDeg + sliceDeg / 2;
+    span.style.fontSize = `${fontPx}px`;
+    span.style.transform =
+      `translate(-50%, -50%) rotate(${centerDeg}deg) translate(0, -${labelR}px) rotate(${-centerDeg}deg)`;
+  });
+}
+layoutLabels();
+
+let resizeRAF;
+window.addEventListener("resize", () => {
+  cancelAnimationFrame(resizeRAF);
+  resizeRAF = requestAnimationFrame(layoutLabels);
+});
+
+let bgTimeout;
+function pulseBackground(color) {
+  document.body.style.transition = "background 450ms ease";
+  const original = getComputedStyle(document.body).background;
+  document.body.style.background =
+    `radial-gradient(900px 420px at 75% -20%, ${hexToRGBA(color, .35)} 0%, transparent 55%), var(--bg)`;
+  clearTimeout(bgTimeout);
+  bgTimeout = setTimeout(() => { document.body.style.background = original; }, 950);
+}
+function hexToRGBA(hex, a = 1) {
+  const c = hex.replace("#","").match(/[a-f\d]{2}/gi).map(h => parseInt(h,16));
+  return `rgba(${c[0]}, ${c[1]}, ${c[2]}, ${a})`;
+}
+
+function prepSpinFromZero() {
+  wheel.style.transition = "none";
+  wheel.style.transform = "rotate(0deg)";
+  void wheel.offsetWidth;
+  wheel.style.transition = `transform ${SPIN_MS}ms cubic-bezier(.2,.65,0,1)`;
+}
 
 function spin() {
   const betRaw = betInput.value.trim();
@@ -57,19 +98,20 @@ function spin() {
 
   const winningIndex = Math.floor(Math.random() * slotCount);
   const winningNumber = wheelNumbers[winningIndex];
-  const centerAngle = winningIndex * slice + slice / 2;
-  const spins = 4 + Math.floor(Math.random() * 4); 
-  const targetRotation = spins * 360 + (360 - centerAngle);
+  const centerAngle = winningIndex * sliceDeg + sliceDeg / 2;
+  const targetRotation = FIXED_SPINS * 360 + (360 - centerAngle);
 
   spinBtn.disabled = true;
   labels.forEach(l => l.classList.remove("highlight"));
-
+  prepSpinFromZero();
   requestAnimationFrame(() => {
     wheel.style.transform = `rotate(${targetRotation}deg)`;
   });
 
-  wheel.addEventListener("transitionend", () => {
-    lastRotation = targetRotation;
+  let finished = false;
+  const onEnd = () => {
+    if (finished) return;
+    finished = true;
 
     labels[winningIndex].classList.add("highlight");
 
@@ -87,29 +129,13 @@ function spin() {
     li.className = didWin ? "win" : "lose";
     li.textContent = `Bet ${bet} → ${winningNumber} • ${didWin ? "WIN" : "LOSE"}`;
     historyEl.prepend(li);
+
     spinBtn.disabled = false;
-  }, { once: true });
+  };
+
+  wheel.addEventListener("transitionend", onEnd, { once: true });
+  setTimeout(onEnd, SPIN_MS + 80);
 }
 
 spinBtn.addEventListener("click", spin);
-
-betInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") spinBtn.click();
-});
-
-let bgTimeout;
-function pulseBackground(color) {
-  document.body.style.transition = "background 450ms ease";
-  const original = getComputedStyle(document.body).background;
-  document.body.style.background =
-    `radial-gradient(900px 420px at 75% -20%, ${hexToRGBA(color, .35)} 0%, transparent 55%), var(--bg)`;
-  clearTimeout(bgTimeout);
-  bgTimeout = setTimeout(() => {
-    document.body.style.background = original;
-  }, 950);
-}
-
-function hexToRGBA(hex, a = 1) {
-  const c = hex.replace("#","").match(/[a-f\d]{2}/gi).map(h => parseInt(h,16));
-  return `rgba(${c[0]}, ${c[1]}, ${c[2]}, ${a})`;
-}
+betInput.addEventListener("keydown", (e) => { if (e.key === "Enter") spinBtn.click(); });
