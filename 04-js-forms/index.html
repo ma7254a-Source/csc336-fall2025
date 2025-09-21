@@ -1,8 +1,47 @@
 <html>
     <head>
-        <Title>04-js-forms</Title>
+        <Title>Fridge Inventory</Title>
         <lin rel="stylesheet" href="style.css">
         <script src="javascript.js" dref></script>
     </head>
-    <body></body>
+    <body>
+        <header>
+            <h1>Welcome to Your Fridge</h1>
+            <p>Add items to your fridge and catagorize them.</p>
+        </header>
+
+        <section>
+            <!--add an item -->
+            <h2>Add an item</h2>
+
+            <form id="item-form">
+                <label for="item-name">Item Name</label>
+                <input type="text" id="name"> 
+
+            <!--Selection-->
+                <label for="category">Category *</label>
+                <select id="category" name="category">
+                    <option value="">Choose a Categroy</option>
+                    <option value="produce">Produce</option>
+                    <option value="dairy">Dairy</option>
+                    <option value="meats">Meats</option>
+                    <option value="beverages">Beverages</option>
+                    <option value="frozen">Frozen</option>
+                </select>
+
+            <!--Quantity-->
+                <label for="quantity">Quantity *</label>
+                <input type="number" id="quantity" name="quantity">
+
+            <!--Expiration Date-->
+                <label for="expires">Expiration Date</label>
+                <input type="date" id="expires" name="expires">
+
+            <!--Location (radio group)-->
+                <p>Location</p>
+                <label><input type="radio" name="location" value="main">Main Shelf</label>
+                <label><input type="radio" name="location" value="door">Door</label>
+                <label><input type="radio" name="location" value="freezer">Freezer</label>
+            </form>
+        </section>
 </html>
