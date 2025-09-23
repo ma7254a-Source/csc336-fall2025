@@ -11,7 +11,7 @@ header{
     background-color: #2a6f97;
     color: #fff;
     padding: 16px;
-    margin: 0 -16px, 16px, -16;
+    margin: 0 -16px 16px -16;
     text-align: center; 
 }
 
@@ -33,7 +33,7 @@ form label {
 
 input[type="text"],
 input[type="number"], 
-input[type="date"]
+input[type="date"],
 select {
     display: block;
     width: 100%;

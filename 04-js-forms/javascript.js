@@ -7,9 +7,8 @@ const NameInput = document.querySelector('#name');
 const categorySelect = document.querySelector('#category');
 const quantityInput = document.querySelector('#quantity');
 const expiresInput = document.querySelector('#expires');
-const locationRadios = document.querySelectorAll('#input[name="location"]');
+const locationRadios = document.querySelectorAll('input[name="location"]');
 const itemsList = document.querySelector('#items-list')
-
 //our error box, allows us to write messages into the DOM
 const errorBox = document.createElement('div');
 errorBox.id= 'form-errors';
@@ -42,7 +41,7 @@ function showErrors(errors) {
     }
     //List of errors
     const ul = document.createElement('ul');
-    for (let i = 0; i < error.length; i++) {
+    for (let i = 0; i < errors.length; i++) {
         const li = document.createElement('li');
         li.textContent = errors[i];
         ul.appendChild(li);
@@ -59,14 +58,14 @@ function showErrors(errors) {
 
 function addItemToDom(item) {
     const li = document.createElement('li');
-    li.textContent = `${item.name} - ${item.quantity} (${itemsList.category}, ${item.location}) - expires ${item.expires}`;
+    li.textContent = `${item.name} - ${item.quantity} (${item.category}, ${item.location}) - expires ${item.expires}`;
     itemsList.appendChild(li);
 }
 
 //Our validation handler 
-form.addEventListener('submit', function (evt)) {
+form.addEventListener('submit', function (evt) {
     evt.preventDefault();
-    const errors = []
+    const errors = [];
     const name = (NameInput.value || '').trim();
     const category = (categorySelect.value || '').trim();
     const quantityStr = (quantityInput.value || '').trim();
@@ -108,7 +107,8 @@ form.addEventListener('submit', function (evt)) {
     const newItem = {
         name: name,
         category: category,
-        expires: quantity,
+        quantity: quantity,
+        expires: expires,
         location: location,
         addedAt: new Date().toISOString()
     }; 
@@ -122,4 +122,4 @@ form.addEventListener('submit', function (evt)) {
     form.reset();
     NameInput();
 
-}
+});
