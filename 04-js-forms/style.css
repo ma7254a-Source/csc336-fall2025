@@ -1,0 +1,84 @@
+/*Page*/ 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0 16px; 
+    background-color: #f7f7f7;
+    color: #222;
+}
+
+header{
+    background-color: #2a6f97;
+    color: #fff;
+    padding: 16px;
+    margin: 0 -16px, 16px, -16;
+    text-align: center; 
+}
+
+section {
+    background-color: #fff;
+    padding: 16px;
+    margin: 0 auto 16px auto; 
+    max-width: 720px;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+}
+
+/*For the form element*/
+form label { 
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="number"], 
+input[type="date"]
+select {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    padding: 8px;
+    margin-top: 6px;
+    border: 1px solid #cfcfcf;
+    background-color:#fafafa; 
+}
+
+/*For radio group*/
+p + label input[type="radio"],
+label input[type="radio"] {
+    margin-right: 6px; /*trying to keep default radio look with a small right margin*/
+}
+
+/*Submit button*/
+button[type="submit"] {
+    margin-top: 14px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #2a6f97;
+    color: #fff;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #225b7a; 
+}
+
+/*for dyamic add area*/
+#items-list li {
+    background-color: #f0f8ff;
+    border: 1px solid #cfe5f4;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 8px;
+}
+
+/*for footer*/
+footer {
+    text-align: center;
+    padding: 16px 0 32px 0;
+    color: #666;
+}
+
+
