@@ -122,3 +122,28 @@
     color:#333; 
     margin-top: 6px;
 }
+
+.location-map{
+    width: 100%;
+    padding: 16px 0;
+}
+
+.location-inner {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.location-item img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.location-item figcaption {
+    font-family: EB Garamond, serif;
+    font-size: 14px;
+    color: black;
+    margin-top: 6px;
+}
