@@ -1,7 +1,7 @@
 *{ 
     margin: 0;
     padding: 0;
-    list-style: 0;
+    list-style: none;
     text-decoration: none;
 }
 
@@ -68,7 +68,7 @@ body {
     vertical-align: middle;
     font-family: EB Garamond;
     font-size: 32px;
-    font-weight: 200px; 
+    font-weight: 200; 
 }
 
 .navigation{
