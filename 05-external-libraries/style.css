@@ -5,6 +5,10 @@
     text-decoration: none;
 }
 
+body {
+    background-color: #f5f5f7;
+}
+
 .header { 
     width: 100%; 
     height: 80px;
@@ -79,6 +83,12 @@
     padding: 0px 20px;
 }
 
+.navigation a:hover{
+    background-color: black;
+    box-shadow: inset 0 -3px rgba(255,255,255,0.35);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
 .navigation a:last-child{
     padding-right: 0
 }
@@ -146,4 +156,13 @@
     font-size: 14px;
     color: black;
     margin-top: 6px;
+}
+
+#about, #hours {
+    color: #222;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 1000px;
+    margin: 16px auto;
+    padding: 0 16px;
 }
