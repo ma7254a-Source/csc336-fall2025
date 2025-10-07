@@ -61,7 +61,7 @@ fetchData();
 
 async function fetchData() {
     try{
-        const response = await fetch("http://api.weatherstack.com/current?access_key=a11733a000cbeecf1937a8b10890bd36&query=New%20York"); //i know it says New York, ill change to dc before submitting. 
+        const response = await fetch("http://api.weatherstack.com/current?access_key=a11733a000cbeecf1937a8b10890bd36&query=Washington%2C%20DC&units=f"); //i know it says New York, ill change to dc before submitting. 
         if(!response.ok) throw new Error ("Could not fetch resource.");
         const data = await response.json();
 
@@ -80,7 +80,7 @@ async function fetchData() {
     }
 }
 
-//now lets print from the DOM --> we'll add a div "repot" in our html file to support this report object we've made. 
+//now lets print from the DOM --> we'll add a <pre> tag in a new div in our html file to support this report object we've made. 
 
 document.getElementById("button").addEventListener("click", async () =>{
     const output = document.getElementById("report"); //little confusing, ill change the const name when I think of something better to call it --> renaming output because its going to conflict with later constant.
@@ -94,3 +94,33 @@ document.getElementById("button").addEventListener("click", async () =>{
     console.log(error);
     }
 });
+
+//Just using the same asyn function i've created 
+async function fetchJoke() {
+    try{
+        const response = await fetch ("https://official-joke-api.appspot.com/jokes/random");
+        if (!response.ok) throw new Error("That one wasn't that funny.");
+        const joke = await response.json();
+        return joke;
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+/*fetchJoke() //calling to see if it'll print --> it works.*/
+
+//So now its about connecting it to a button, I'll use some of the code I wrote earlier to just have it return the const then its printed from the DOM via a button press. 
+document.getElementById("funny-button").addEventListener("click", async () => {
+    const quip = document.getElementById("report"); //having errors prrinting the joke object, i think I can reuse the <pre> tag like i did for my report object to change the fields of the joke object to become readable. 
+    quip.textContent = "Getting one from the bit book...";
+    try {
+        const {setup, punchline} = await fetchJoke(); //destructure joke fields
+        quip.textContent = `${setup}\n${punchline}`; //Separated into two pieces, more readable now?
+    } 
+    catch (error) {
+        console.error(error);
+    }
+}); 
+
+/*Okay so now either will print but in the same space, so only one can exist at the same time. Thats fine right? (nervous laughter) I'm gonna pivot to the CSS rules now. */
