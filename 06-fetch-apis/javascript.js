@@ -1,17 +1,86 @@
-//Using WeatherStack, semi-open source weather report API --> free account grants 100 calls/month
-//Asked people at work what items they look for most when they view the weather app: chance of rain, temp. highs-lows, and "current" temperature were the largest items.
+/*
+Using WeatherStack, semi-open source weather report API --> free account grants 100 calls/month --> as of submission 45/100 have been used. If theres an issue (out of calls, API code, whatever), email me and i'll fix it. 
+Asked people at work what items they look for most when they view the weather app: chance of rain, temp. highs-lows, and "current" temperature were the largest items. --> this changed to the current report items, could not find high-low temps in the API.
+Most of my early code has been moved to the bottom so you don't have to scroll through 100 lines of comments. --> starts with simple promise chain, scales to async-await function that I use as a blueprint for most of the code.
+*/
 
-/* --basic fetch method using a simple promise chain-- 
+async function fetchData() {
+    /*fetch data from WeatherStack API, return series of items as object so that, as we've done before, it can be printed from the DOM using a second async-await function summoned by user input*/
+    try{
+        const response = await fetch("https://api.weatherstack.com/current?access_key=a11733a000cbeecf1937a8b10890bd36&query=Washington%2C%20DC&units=f"); 
+        if(!response.ok) throw new Error ("Could not fetch resource.");
+        const data = await response.json();
+
+        //our report object, returned to be accessed by seperate async-await function.
+        return {
+            city: data.location.name, //adding location, feelslike, and humidity --> need more substance in the report.
+            tempC: data.current.temperature,
+            precipitation: data.current.precip,
+            feelsLike: data.current.feelslike, 
+            humidity: data.current.humidity, 
+
+        };
+    }
+    catch(error) {
+        console.log(error);
+    }
+}
+
+//now lets print from the DOM --> we'll add a <pre> tag in a new div in our html file to support this report object we've made. 
+document.getElementById("button").addEventListener("click", async () =>{ //arrow function from earlier, waits for fetchData()'s promise before strinifying the content
+    const output = document.getElementById("report"); //little confusing, ill change the const name when I think of something better to call it --> renaming output because its going to conflict with later constant.
+    output.textContent = "Generating..."
+    try{
+        const report = await fetchData();
+        output.textContent = ""; //clear our 'generating' statement
+        output.textContent = JSON.stringify(report, null, 2); //for now just going to "pretty-print" the report, we can clean it up either in script or maybe css? --> I didn't, hate me if you want but its readable and thats good enough for me and like my parents who'll i'll send this to after. 
+    }
+    catch(error){
+    console.log(error);
+    }
+});
+
+//I'm gonna pivot towards accessing a second API for the assignment requirements. Just going to use the official joke API to print a joke when asked. 
+async function fetchJoke() {
+    /*Using the same async-await function I wrote earlier*/ 
+    try{
+        const response = await fetch ("https://official-joke-api.appspot.com/jokes/random");
+        if (!response.ok) throw new Error("That one wasn't that funny.");
+        const joke = await response.json();
+        return joke;
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+//So now its about connecting it to a button, I'll use some of the code I wrote earlier to just have it return the const then its printed from the DOM via a button press. 
+document.getElementById("funny-button").addEventListener("click", async () => {
+    const quip = document.getElementById("report"); //having errors printing the joke object, i think I can reuse the <pre> tag like i did for my report object to change the fields of the joke object to become readable. --> fixed.
+    quip.textContent = "Getting one from the bit book...";
+    try {
+        const {setup, punchline} = await fetchJoke(); //destructure joke fields
+        quip.textContent = `${setup}\n${punchline}`; //Separated into two pieces, more readable now
+    } 
+    catch (error) {
+        console.error(error);
+    }
+}); 
+
+//Okay so now either will print but in the same space, so only one can exist at the same time. Thats fine right? (nervous laughter) I'm gonna pivot to the CSS rules now. 
+
+
+/*
+Proto-Code!
+--------------
+--basic fetch method using a simple promise chain-- 
 fetch("http://api.weatherstack.com/current?access_key=a11733a000cbeecf1937a8b10890bd36&query=New%20York")
 .then(res=>res.json()) //"response (<--our response object) --> convert to json"
 .then(data => console.log(data)) //"data --> print data"
 .catch(err => console.error(err)); //"If theres an error, print it."
 --Call async-wait function--
 fetchData();
-*/
 
-
-/*
 //fetch function using async-await method 
 async function fetchData(){
     //the fetch function will return an object, 'response' object. We will await a promise, returned by fetch() 
@@ -53,74 +122,8 @@ function extractData() {
 
 //Call async-wait function
 fetchData();
-*/
+
 
 
 //Now how do i get multiple single values? --> temp, precipitation, and feels like temp we'll say --> weatherstack doesnt have a high-low range value accessible 
-/*create a report object inside our fetchData() that, as we've done before, is printed from the DOM using a second async-await function at the click of our "get weather" button */
-
-async function fetchData() {
-    try{
-        const response = await fetch("http://api.weatherstack.com/current?access_key=a11733a000cbeecf1937a8b10890bd36&query=Washington%2C%20DC&units=f"); //i know it says New York, ill change to dc before submitting. 
-        if(!response.ok) throw new Error ("Could not fetch resource.");
-        const data = await response.json();
-
-        //our report object, returned so we can print from the DOM. 
-        return {
-            city: data.location.name, //wanting to know where the weather is reporting would be nice 
-            tempC: data.current.temperature,
-            precipitation: data.current.precip,
-            feelsLike: data.current.feelslike,
-            humidity: data.current.humidity, //throw this in because why not
-
-        };
-    }
-    catch(error) {
-        console.log(error);
-    }
-}
-
-//now lets print from the DOM --> we'll add a <pre> tag in a new div in our html file to support this report object we've made. 
-
-document.getElementById("button").addEventListener("click", async () =>{
-    const output = document.getElementById("report"); //little confusing, ill change the const name when I think of something better to call it --> renaming output because its going to conflict with later constant.
-    output.textContent = "Generating..."
-    try{
-        const report = await fetchData();
-        output.textContent = ""; //clear our 'generating' statement
-        output.textContent = JSON.stringify(report, null, 2); //for now just going to "pretty-print" the report, we can clean it up either in script or maybe css? 
-    }
-    catch(error){
-    console.log(error);
-    }
-});
-
-//Just using the same asyn function i've created 
-async function fetchJoke() {
-    try{
-        const response = await fetch ("https://official-joke-api.appspot.com/jokes/random");
-        if (!response.ok) throw new Error("That one wasn't that funny.");
-        const joke = await response.json();
-        return joke;
-    }
-    catch(error){
-        console.log(error);
-    }
-}
-
-/*fetchJoke() //calling to see if it'll print --> it works.*/
-
-//So now its about connecting it to a button, I'll use some of the code I wrote earlier to just have it return the const then its printed from the DOM via a button press. 
-document.getElementById("funny-button").addEventListener("click", async () => {
-    const quip = document.getElementById("report"); //having errors prrinting the joke object, i think I can reuse the <pre> tag like i did for my report object to change the fields of the joke object to become readable. 
-    quip.textContent = "Getting one from the bit book...";
-    try {
-        const {setup, punchline} = await fetchJoke(); //destructure joke fields
-        quip.textContent = `${setup}\n${punchline}`; //Separated into two pieces, more readable now?
-    } 
-    catch (error) {
-        console.error(error);
-    }
-}); 
-
-/*Okay so now either will print but in the same space, so only one can exist at the same time. Thats fine right? (nervous laughter) I'm gonna pivot to the CSS rules now. */
+*/
