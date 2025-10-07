@@ -1,0 +1,26 @@
+/*Going to go with some simple CSS rules: Page basics, Stack buttons, and the preformatted info look like a card.*/
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 0 16px;
+    background: black;
+    color: white;
+    line-height: 1.5;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+/*either this part broke everything or the card is covering the text. --> upon second glance, I just wasnt careful with the color combinations. */
+#report { 
+    white-space: pre-wrap;
+    background: black;
+    border: 1px solid #e5e7eb; 
+    padding: 12px;
+    border-radius: 8px;
+    min-height: 80px;
+}
