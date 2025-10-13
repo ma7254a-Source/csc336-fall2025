@@ -3,7 +3,7 @@
     {
         "name": "Westerlands", 
         "climate": "Mediterranean",
-        "town": [
+        "towns": [
             {
                 "name": "Genoa", 
                 "population": 750000, 
@@ -11,17 +11,17 @@
                     {
                         "name": "Elizabeth Chloe Telic II", 
                         "role": "Aristocrat", 
-                        "items": ["Family Hierloom", {"name": "Silver Pendenant", "rarity": "rare", "material": "high-quality silver"}] 
+                        "items": ["Family Heirloom", {"name": "Silver Pendant", "rarity": "rare", "material": "high-quality silver"}] 
                     },
                     {                       
                         "name": "Admiral Torren",   
                         "role": "Naval Officer",
-                        "items": ["Brass Spyglass"]
+                        "items": ["Brass Spyglass", {"name": "time piece", "rarity": "rare", "material": "gold"}]
                     },
                     {
                         "name": "Herric Voldasas",
                         "role": "Guildmaster",
-                        "items": ["Guild Ledger"]
+                        "items": ["Guild Ledger", {"name": "Guild-Hall Key", "rarity": "rare", "material": "steel"}]
                     }
                 ]
             },
@@ -32,7 +32,7 @@
                     {
                         "name": "Sylas Robin",
                         "role": "Aristocrat-Mine Owner", 
-                        "items":["Walking Cane", {"name": "golden ring", "rarity": "uncommon", "size": 12}]
+                        "items":["Walking Cane", {"name": "golden ring", "rarity": "uncommon", "size": "fat"}]
                     },
                     {
                         "name": "Captain Rol", 
@@ -42,7 +42,7 @@
                     {
                         "name": "Able Whistlebottom",
                         "role": "Miner",
-                        "items": ["Pickaxe", "Oil lantern"]
+                        "items": ["Pickaxe", {"name": "Oil lantern", "rarity": "common"}]
                     }
                 ]
             },
@@ -55,11 +55,21 @@
                         "role": "Banker",
                         "items": [
                             {"name": "Debt Ledger", "rarity": "common"},
-                            {"name": "Coin Purse", "rarity": "common", "size": "Fat"}
+                            {"name": "Coin Purse", "rarity": "common", "size": "fat"}
                         ]
-                    },
+                    }
+                ]
+            },
+            {
+                "name": "Zol'A", 
+                "population": 140000,
+                "notable_people": [
                     {
-                        "name": 
+                        "name": "Captain Lionel",
+                        "role": "Mercenary", 
+                        "items": [
+                            {"name": "sword", "rarity":"common"}
+                        ]
                     }
                 ]
             }
