@@ -1,0 +1,69 @@
+{
+    "regions": [
+    {
+        "name": "Westerlands", 
+        "climate": "Mediterranean",
+        "town": [
+            {
+                "name": "Genoa", 
+                "population": 750000, 
+                "notable_people": [
+                    {
+                        "name": "Elizabeth Chloe Telic II", 
+                        "role": "Aristocrat", 
+                        "items": ["Family Hierloom", {"name": "Silver Pendenant", "rarity": "rare", "material": "high-quality silver"}] 
+                    },
+                    {                       
+                        "name": "Admiral Torren",   
+                        "role": "Naval Officer",
+                        "items": ["Brass Spyglass"]
+                    },
+                    {
+                        "name": "Herric Voldasas",
+                        "role": "Guildmaster",
+                        "items": ["Guild Ledger"]
+                    }
+                ]
+            },
+            {
+                "name": "Hymn",
+                "population": 250000,
+                "notable_people": [
+                    {
+                        "name": "Sylas Robin",
+                        "role": "Aristocrat-Mine Owner", 
+                        "items":["Walking Cane", {"name": "golden ring", "rarity": "uncommon", "size": 12}]
+                    },
+                    {
+                        "name": "Captain Rol", 
+                        "role": "Peace Officer",
+                        "items": ["Badge", {"name": "Big Peace Stick", "rarity": "common", "material": "steel"}]
+                    },
+                    {
+                        "name": "Able Whistlebottom",
+                        "role": "Miner",
+                        "items": ["Pickaxe", "Oil lantern"]
+                    }
+                ]
+            },
+            {
+                "name": "Pontiff",
+                "population": 200000,
+                "notable_people":[
+                    {
+                        "name": "Macron Rochefort",
+                        "role": "Banker",
+                        "items": [
+                            {"name": "Debt Ledger", "rarity": "common"},
+                            {"name": "Coin Purse", "rarity": "common", "size": "Fat"}
+                        ]
+                    },
+                    {
+                        "name": 
+                    }
+                ]
+            }
+        ] 
+    }
+]
+}
