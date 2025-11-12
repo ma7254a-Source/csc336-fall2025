@@ -5,11 +5,37 @@
         <script src="script.js" defer></script>
     </head>
     <body>
-        <p>is this thing on?</p>
+        <p>My World Viewer</p>
 
-        <div class="button">
-            <button>Submit</button>
-        </div>
+        <div id="worldDiv"></div>
 
+        <form id="addPersonForm">
+            <label>
+                Region:
+                <input type="text" name ="region" placeholder="Westerlands" required>
+            </label>
+            <br>
+            <label>
+                Town:
+                <input type="text" name="town" placeholder="Genoa" required>
+            </label>
+            <br>
+            <label>
+                Name:
+                <input type="text" name="name" placeholder="John Smith" required>
+            </label>
+            <br>
+            <label>
+                Role:
+                <input type="text" name="role" placeholder="Doctor" required> 
+            </label>
+            <br>
+            <label>
+                <!--Item:
+                <input type="text" name="item" placeholder="Spoon" required> 
+            </label> -->
+
+            <button type="submit">Add Person</button>
+        </form>
     </body>
 </html>

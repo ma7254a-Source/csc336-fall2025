@@ -1,79 +1,149 @@
 {
-    "regions": [
+  "regions": [
     {
-        "name": "Westerlands", 
-        "climate": "Mediterranean",
-        "towns": [
+      "name": "Westerlands",
+      "climate": "Mediterranean",
+      "towns": [
+        {
+          "name": "Genoa",
+          "population": 750000,
+          "notable_people": [
             {
-                "name": "Genoa", 
-                "population": 750000, 
-                "notable_people": [
-                    {
-                        "name": "Elizabeth Chloe Telic II", 
-                        "role": "Aristocrat", 
-                        "items": ["Family Heirloom", {"name": "Silver Pendant", "rarity": "rare", "material": "high-quality silver"}] 
-                    },
-                    {                       
-                        "name": "Admiral Torren",   
-                        "role": "Naval Officer",
-                        "items": ["Brass Spyglass", {"name": "time piece", "rarity": "rare", "material": "gold"}]
-                    },
-                    {
-                        "name": "Herric Voldasas",
-                        "role": "Guildmaster",
-                        "items": ["Guild Ledger", {"name": "Guild-Hall Key", "rarity": "rare", "material": "steel"}]
-                    }
-                ]
+              "name": "Elizabeth Chloe Telic II",
+              "role": "Aristocrat",
+              "items": [
+                "Family Heirloom",
+                {
+                  "name": "Silver Pendant",
+                  "rarity": "rare",
+                  "material": "high-quality silver"
+                }
+              ]
             },
             {
-                "name": "Hymn",
-                "population": 250000,
-                "notable_people": [
-                    {
-                        "name": "Sylas Robin",
-                        "role": "Aristocrat-Mine Owner", 
-                        "items":["Walking Cane", {"name": "golden ring", "rarity": "uncommon", "size": "fat"}]
-                    },
-                    {
-                        "name": "Captain Rol", 
-                        "role": "Peace Officer",
-                        "items": ["Badge", {"name": "Big Peace Stick", "rarity": "common", "material": "steel"}]
-                    },
-                    {
-                        "name": "Able Whistlebottom",
-                        "role": "Miner",
-                        "items": ["Pickaxe", {"name": "Oil lantern", "rarity": "common"}]
-                    }
-                ]
+              "name": "Admiral Torren",
+              "role": "Naval Officer",
+              "items": [
+                "Brass Spyglass",
+                {
+                  "name": "time piece",
+                  "rarity": "rare",
+                  "material": "gold"
+                }
+              ]
             },
             {
-                "name": "Pontiff",
-                "population": 200000,
-                "notable_people":[
-                    {
-                        "name": "Macron Rochefort",
-                        "role": "Banker",
-                        "items": [
-                            {"name": "Debt Ledger", "rarity": "common"},
-                            {"name": "Coin Purse", "rarity": "common", "size": "fat"}
-                        ]
-                    }
-                ]
+              "name": "Herric Voldasas",
+              "role": "Guildmaster",
+              "items": [
+                "Guild Ledger",
+                {
+                  "name": "Guild-Hall Key",
+                  "rarity": "rare",
+                  "material": "steel"
+                }
+              ]
             },
             {
-                "name": "Zol'A", 
-                "population": 140000,
-                "notable_people": [
-                    {
-                        "name": "Captain Lionel",
-                        "role": "Mercenary", 
-                        "items": [
-                            {"name": "sword", "rarity":"common"}
-                        ]
-                    }
-                ]
+              "name": "Tom",
+              "role": "Soldier ",
+              "items": [
+                "Sword"
+              ]
+            },
+            {
+              "name": "Bob",
+              "role": "Cook",
+              "items": [
+                "apron"
+              ]
+            },
+            {
+              "name": "Veena ",
+              "role": "Lawyer ",
+              "items": []
             }
-        ] 
+          ]
+        },
+        {
+          "name": "Hymnn",
+          "population": 250000,
+          "notable_people": [
+            {
+              "name": "Sylas Robin",
+              "role": "Aristocrat-Mine Owner",
+              "items": [
+                "Walking Cane",
+                {
+                  "name": "golden ring",
+                  "rarity": "uncommon",
+                  "size": "fat"
+                }
+              ]
+            },
+            {
+              "name": "Captain Rol",
+              "role": "Peace Officer",
+              "items": [
+                "Badge",
+                {
+                  "name": "Big Peace Stick",
+                  "rarity": "common",
+                  "material": "steel"
+                }
+              ]
+            },
+            {
+              "name": "Able Whistlebottom",
+              "role": "Miner",
+              "items": [
+                "Pickaxe",
+                {
+                  "name": "Oil lantern",
+                  "rarity": "common"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Pontiff",
+          "population": 200000,
+          "notable_people": [
+            {
+              "name": "Macron Rochefort",
+              "role": "Banker",
+              "items": [
+                {
+                  "name": "Debt Ledger",
+                  "rarity": "common"
+                },
+                {
+                  "name": "Coin Purse",
+                  "rarity": "common",
+                  "size": "fat"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Zol'A",
+          "population": 140000,
+          "notable_people": [
+            {
+              "name": "Captain Lionel",
+              "role": "Mercenary",
+              "items": [
+                {
+                  "name": "sword",
+                  "rarity": "common"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
-]
+  ]
 }
