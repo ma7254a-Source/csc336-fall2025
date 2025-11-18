@@ -1,42 +1,138 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #f7f3ff 0, #eceff4 50%, #e5e7eb 100%);
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 2rem auto;
   padding: 2rem;
-  text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-container {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  padding: 2rem 2.5rem;
+  text-align: left;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-container h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #111827;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/*Input and button row*/
+.add-word {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
-.card {
-  padding: 2em;
+.add-word input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
 }
 
-.read-the-docs {
-  color: #888;
+.add-word input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+}
+
+.add-word button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #6366f1;
+  color: #ffffff;
+  transition: background 120ms ease, transform 80ms ease,
+    box-shadow 120ms ease;
+}
+
+.add-word button:hover {
+  background: #4f46e5;
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+}
+
+.add-word button:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.word-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+/*Single word item*/
+.word-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  transition: background 120ms ease, transform 80ms ease,
+    box-shadow 120ms ease;
+}
+
+.word-item:hover {
+  background: #f3f4ff;
+  box-shadow: 0 4px 10px rgba(148, 163, 184, 0.3);
+  transform: translateY(-1px);
+}
+
+.word-item--important {
+  border-color: #f97316;
+  background: #fff7ed;
+}
+
+.word-item__text {
+  font-size: 1rem;
+  color: #111827;
+}
+
+/*Container for badges*/
+.word-item__badges {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/*Badge variants driven by the `variant` prop on WordBadge*/
+.badge--important {
+  background: rgba(248, 113, 113, 0.1);
+  color: #b91c1c;
+  border: 1px solid rgba(248, 113, 113, 0.7);
+}
+
+.badge--long {
+  background: rgba(59, 130, 246, 0.08);
+  color: #1d4ed8;
+  border: 1px solid rgba(59, 130, 246, 0.6);
 }

@@ -2,13 +2,15 @@ import { useState } from 'react';
 import ListItem from './ListItem';
 import "./App.css"; //for styling later
 
+
+/*words marked with important are MY favorite words. meant to separate the ones the user adds vs mine*/
 function App() {
   const [items, setItems] = useState ([
-    { text:"cantankerous", important: false},
-    { text:"prudent", important: false},
-    { text:"ardent", important: false},
-    { text:"programmatically", important: false},
-    { text:"intuition", important: false},
+    { text:"cantankerous", important: true}, 
+    { text:"prudent", important: true},
+    { text:"ardent", important: true},
+    { text:"programmatically", important: true},
+    { text:"intuition", important: true},
   ]);
 
   const [inputValue, setInputValue] = useState("");
