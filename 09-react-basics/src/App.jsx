@@ -9,9 +9,30 @@ function App() {
     { text:"intuition", important: false},
   ]);
 
+  const [inputValue, setInputValue] = useState("");
+
+  function add() {
+    if (!inputValue.trim()) return;
+
+    setItems([...items, {text: inputValue.trim(), important: false }]);
+    setInputValue("");
+  }
+
   return (
     <div>
       <h1>Some of My Favorite Words</h1>
+      {/*new input div*/}
+      <div>
+        <input
+          type="text"
+          placeholder="Add a New Word"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <button onClick={add}>Add</button>
+      </div>
+
+      {/*display the list*/}
       <ul>
         {items.map((item, index) => (
           <ListItem
