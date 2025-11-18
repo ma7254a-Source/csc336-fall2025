@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import ListItem from './ListItem';
+import "./App.css"; //for styling later
 
 function App() {
   const [items, setItems] = useState ([
@@ -19,10 +21,10 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="app-container">
       <h1>Some of My Favorite Words</h1>
-      {/*new input div*/}
-      <div>
+
+      <div className="add-word">
         <input
           type="text"
           placeholder="Add a New Word"
@@ -32,8 +34,8 @@ function App() {
         <button onClick={add}>Add</button>
       </div>
 
-      {/*display the list*/}
-      <ul>
+      {/*new render--copied from old*/}
+      <ul className="word-list">
         {items.map((item, index) => (
           <ListItem
           key={index}
@@ -46,6 +48,32 @@ function App() {
   );
 }
 
+      {/*old input + button div
+      <div>
+        <input
+          type="text"
+          placeholder="Add a New Word"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <button onClick={add}>Add</button>
+      </div>
+
+
+      <ul>
+        {items.map((item, index) => (
+          <ListItem
+          key={index}
+          text={item.text}
+          important={item.important}
+          />
+        ))}
+      </ul>
+    </div>
+  );
+}
+*/}
+{/* new ListItem has been moved to ListItem.jsx
 function ListItem({text, important}) {
   const style = {
     fontWeight: important ? "bold" : "normal", 
@@ -59,6 +87,6 @@ function ListItem({text, important}) {
     </li>
   );
 }
-
+*/}
 
 export default App
