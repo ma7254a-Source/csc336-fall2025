@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <div className="app-shell">
-        <header classname="app-header">
+        <header className="app-header">
           <h1>Favorite Words App</h1>
           <nav className="nav">
             <Link to="/">Home</Link>

@@ -4,7 +4,7 @@ import ListItem from "./ListItem";
 
 function WordListPage() {
   const [items, setItems] = useState([
-    { text: "cantankerous", important: false },
+    { text: "cantankerous", important: true },
     { text: "prudent", important: false },
     { text: "ardent", important: false },
     { text: "programmatically", important: true },
