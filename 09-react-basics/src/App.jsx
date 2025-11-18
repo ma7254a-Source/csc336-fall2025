@@ -1,9 +1,47 @@
-import { useState } from 'react';
+import {BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "./App.css"; 
+import WordListPage from "./WordListPage"; 
+import AboutPage from "./AboutPage";
+import ApiDataPage from "./ApiDataPage";
+
+function App() {
+  return (
+    <Router>
+      <div className="app-shell">
+        <header classname="app-header">
+          <h1>Favorite Words App</h1>
+          <nav className="nav">
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/api">API Data</Link>
+          </nav>
+        </header>
+
+        <main>
+          <Routes>
+            {/*Our home route*/}
+            <Route path="/" element={<WordListPage />} />
+
+            {/*our informational route*/}
+            <Route path="/about" element={<AboutPage />} />
+
+            {/*API data page route (going to add useEffect + fetch here)*/}
+            <Route path="/api" element={<ApiDataPage />} /> 
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
+}
+
+export default App; 
+
+/*import { useState } from 'react';
 import ListItem from './ListItem';
-import "./App.css"; //for styling later
+import "./App.css"; //for styling later 
 
-
-/*words marked with important are MY favorite words. meant to separate the ones the user adds vs mine*/
+//App function from pt1
+//words marked with important are MY favorite words. meant to separate the ones the user adds vs mine
 function App() {
   const [items, setItems] = useState ([
     { text:"cantankerous", important: true}, 
@@ -36,7 +74,7 @@ function App() {
         <button onClick={add}>Add</button>
       </div>
 
-      {/*new render--copied from old*/}
+      //new render--copied from old
       <ul className="word-list">
         {items.map((item, index) => (
           <ListItem
@@ -49,8 +87,7 @@ function App() {
     </div>
   );
 }
-
-      {/*old input + button div
+      //old input + button div
       <div>
         <input
           type="text"
@@ -74,8 +111,8 @@ function App() {
     </div>
   );
 }
-*/}
-{/* new ListItem has been moved to ListItem.jsx
+
+//new ListItem has been moved to ListItem.jsx
 function ListItem({text, important}) {
   const style = {
     fontWeight: important ? "bold" : "normal", 
@@ -89,6 +126,6 @@ function ListItem({text, important}) {
     </li>
   );
 }
-*/}
 
-export default App
+export default App; 
+*/
