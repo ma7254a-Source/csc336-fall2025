@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { API_BASE_URL } from '../apiConfig'
-import worldmap from '../assets/worldmap.png'
+import worldmap from '../assets/worldmap.png' 
 
 function Map() {
   const [regions, setRegions] = useState([])
