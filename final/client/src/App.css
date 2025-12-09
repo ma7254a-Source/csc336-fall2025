@@ -176,30 +176,41 @@ body {
   background-color: var(--highland-blue);
 }
 
-.compendium-page h1 {
+.compendium-content {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.compendium-content h1 {
   font-size: 2.5rem;
   color: var(--deep-brown);
   margin-bottom: 0.5rem;
-  padding: 2rem 2rem 0;
-  background-color: white;
-  border-radius: 0 0 0 0;
+  padding: 0;
+  background: none;
 }
 
 .page-description {
   color: var(--stone-gray);
   font-size: 1.1rem;
-  padding: 0 2rem 2rem;
-  background-color: white;
+  padding: 0;
+  margin-bottom: 2rem;
+  background: none;
 }
 
 .entry-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin-top: 2rem;
 }
 
 .no-entries {
@@ -387,25 +398,31 @@ body {
   border-radius: 8px;
 }
 
-.map-page h1 {
+.map-page-content {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.map-page-content h1 {
   font-size: 2.5rem;
   color: var(--deep-brown);
   margin-bottom: 0.5rem;
-  padding: 2rem 2rem 0;
-  background-color: white;
-  border-radius: 0 0 0 0;
-}
-
-.map-page .page-description {
-  background-color: white;
+  padding: 0;
+  background: none;
 }
 
 .map-container {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
   min-height: 400px;
+  margin-top: 2rem;
 }
 
 .map-placeholder {
@@ -449,8 +466,11 @@ body {
 .create-entry-page {
   background-color: white;
   padding: 3rem;
-  border-radius: 8px;
+  border-radius: 0 0 8px 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .create-entry-page h1 {
