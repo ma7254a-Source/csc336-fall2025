@@ -1,33 +1,64 @@
-import { useState } from 'react'
-import worldData from '../data/worldData.json'
+import { useState, useEffect } from 'react'
+import { API_BASE_URL } from '../apiConfig'
 
 function Map() {
-  const [regions] = useState(worldData.regions || [])
-  
+  const [regions, setRegions] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    async function fetchRegions() {
+      try {
+        setLoading(true)
+        setError(null)
+
+        const response = await fetch(`${API_BASE_URL}/api/items`)
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`)
+        }
+
+        const data = await response.json()
+        setRegions(data.regions || [])
+      } catch (err) {
+        console.error(err)
+        setError('Failed to load regions from the server.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchRegions()
+  }, [])
+
   return (
     <div className="page-container">
       <header className="page-header">
         <h2>World Map</h2>
       </header>
-      
+
       <div className="map-page-content">
         <h1>World Map</h1>
         <p className="page-description">Explore the regions of Terra Inter</p>
-        
-        <div className="map-container">
-          <div className="map-placeholder">
-            <p>Interactive map coming soon...</p>
-            
-            <div className="region-list">
-              {regions.map(region => (
-                <div key={region.id} className="region-preview">
-                  <h3>{region.name}</h3>
-                  <p>{region.summary}</p>
-                </div>
-              ))}
+
+        {loading && <p>Loading regions...</p>}
+        {error && <p className="error-text">{error}</p>}
+
+        {!loading && !error && (
+          <div className="map-container">
+            <div className="map-placeholder">
+              <p>Interactive map coming soon...</p>
+
+              <div className="region-list">
+                {regions.map(region => (
+                  <div key={region.id} className="region-preview">
+                    <h3>{region.name}</h3>
+                    <p>{region.summary}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )

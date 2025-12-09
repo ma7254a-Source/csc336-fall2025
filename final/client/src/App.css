@@ -552,6 +552,34 @@ body {
   background-color: var(--highland-blue);
 }
 
+.input-error {
+  border-color: #b33a3a;
+  background-color: #fbecec;
+}
+
+.error-text {
+  color: #b33a3a;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.form-success {
+  background-color: #e3f3e6;
+  border: 1px solid #4a5c3e;
+  color: #2c3b28;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.helper-text {
+  color: var(--stone-gray);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
