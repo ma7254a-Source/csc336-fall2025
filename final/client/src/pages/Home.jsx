@@ -1,4 +1,5 @@
-// pages/Home.jsx - Landing page
+import { Link } from 'react-router-dom'
+
 function Home() {
   return (
     <div className="page-container">
@@ -19,19 +20,19 @@ function Home() {
           <div className="home-link-card">
             <h3>Compendium</h3>
             <p>Browse a collection of entries including locations, factions, characters, and historical events from across Terra Inter.</p>
-            <a href="/compendium" className="link-button">Explore Compendium</a>
+            <Link to="/compendium" className="link-button">Explore Compendium</Link>
           </div>
           
           <div className="home-link-card">
             <h3>World Map</h3>
             <p>Navigate an interactive map of the known world. Click on regions to be taken to their respective pages.</p>
-            <a href="/map" className="link-button">View Map</a>
+            <Link to="/map" className="link-button">View Map</Link>
           </div>
           
           <div className="home-link-card">
             <h3>Add Entry</h3>
             <p>Contribute to the world by creating new entries. Add locations, factions, characters, or events to expand the lore.</p>
-            <a href="/create" className="link-button">Create Entry</a>
+            <Link to="/create" className="link-button">Create Entry</Link>
           </div>
         </nav>
       </div>
