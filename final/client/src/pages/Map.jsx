@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { API_BASE_URL } from '../apiConfig'
+import worldmap from '../assets/worldmap.png'
 
 function Map() {
   const [regions, setRegions] = useState([])
@@ -31,7 +32,7 @@ function Map() {
   }, [])
 
   return (
-    <div className="page-container">
+    <div className="page-container map-page-container">
       <header className="page-header">
         <h2>World Map</h2>
       </header>
@@ -45,17 +46,13 @@ function Map() {
 
         {!loading && !error && (
           <div className="map-container">
-            <div className="map-placeholder">
-              <p>Interactive map coming soon...</p>
-
-              <div className="region-list">
-                {regions.map(region => (
-                  <div key={region.id} className="region-preview">
-                    <h3>{region.name}</h3>
-                    <p>{region.summary}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="map-content">
+              <img
+                src={worldmap}
+                alt="Terra Inter world map"
+                className="world-map-image"
+              />
+              {/*placeholder card removed for actual map*/}
             </div>
           </div>
         )}

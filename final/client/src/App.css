@@ -105,7 +105,7 @@ body {
   box-sizing: border-box;
 }
 
-/*.compendium-content {
+.compendium-content {
   background-color: white;
   padding: 3rem;
   border-radius: 0 0 8px 8px;
@@ -114,15 +114,11 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
-*/
-.compendium-content {
-  background-color: white;
-  padding: 3rem;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  box-sizing: border-box;
+
+.map-page-container {
+  max-width: none;        
 }
+
 
 .map-page-content {
   background-color: white;
@@ -143,6 +139,7 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+
 
 .home-title {
   font-size: 2.5rem;
@@ -232,28 +229,18 @@ body {
   background: none;
 }
 
-/*.entry-list {
+.entry-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
   padding: 0;
   background: none;
   border-radius: 0;
   box-shadow: none;
   margin-top: 2rem;
   width: 100%;
-}*/
-
-.entry-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  padding: 0;
-  margin-top: 2rem;
-  width: 100%;
   box-sizing: border-box;
 }
-
 
 .no-entries {
   text-align: center;
@@ -261,18 +248,6 @@ body {
   color: var(--stone-gray);
   font-size: 1.2rem;
 }
-
-/*.entry-card {
-  background-color: var(--parchment);
-  border: 2px solid var(--mist);
-  border-radius: 8px;
-  padding: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  box-sizing: border-box;
-}*/
 
 .entry-card {
   background-color: var(--parchment);
@@ -283,8 +258,10 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
-
 
 .entry-card:hover {
   transform: translateY(-5px);
@@ -454,6 +431,7 @@ body {
   border-radius: 8px;
 }
 
+
 .map-page-content h1 {
   font-size: 2.5rem;
   color: var(--deep-brown);
@@ -463,12 +441,23 @@ body {
 }
 
 .map-container {
-  background-color: transparent;
-  padding: 0;
-  border-radius: 0;
-  box-shadow: none;
-  min-height: 400px;
   margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.map-content {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.world-map-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid var(--mist);
+  margin-bottom: 0;
 }
 
 .map-placeholder {
@@ -479,7 +468,7 @@ body {
 
 .region-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -610,7 +599,6 @@ body {
   font-size: 0.9rem;
   margin-top: 0.25rem;
 }
-
 
 @media (max-width: 768px) {
   .nav-container {
