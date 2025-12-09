@@ -41,7 +41,7 @@
         "politicans"
       ],
       "summary": "A common defense pact consisting of the city state of the Westerlands.",
-      "body": "More detailed lore...",
+      "body": "Established after gaining their independence from the Adyaerion Empire, the Westerland Federation is a collection of city states looking to forge the first constitutional government in the world. They have forsaken the concepts of monarchs and have created the first elected parlimentary government.",
       "relatedIds": [
         "city-genoa"
       ]
@@ -52,10 +52,10 @@
       "category": "location",
       "regionId": null,
       "tags": [
-        "city"
+        "city, trade, navy"
       ],
-      "summary": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "body": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "summary": "City in the Westerlands known for its luxury accomodations, clientele, and cuisine.",
+      "body": "As the second largest city in the Westerlands, Pontiff is situated in the shadow of Genoa's grandeur. Though, that does not take away its importance. While the politican plays his games of chess in Genoa, the merchent, guild master, and aristocrat strike deals that change entire markets. Pontiff is the financial headquarters of several successful trading companies, guilds, and family businesses who prefer to stay away from the liberal politics of Genoa.",
       "relatedIds": []
     },
     {
@@ -64,20 +64,8 @@
       "category": "character",
       "regionId": null,
       "tags": [],
-      "summary": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "body": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "relatedIds": []
-    },
-    {
-      "id": "mmmmm",
-      "title": "mmmmm",
-      "category": "faction",
-      "regionId": null,
-      "tags": [
-        "asdf-asdf-asf"
-      ],
-      "summary": "majskfjasdfksdfasdfasdf",
-      "body": "asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf",
+      "summary": "Resident of Uthwend Village and scholar at the Observatory of Wend",
+      "body": "Lilian Hosta is the daughter of respected Wendian elder, Verric Hosta. Lilian is an accomplished scholar, sorcerer, and occasional diplomat. From a young age she excelled in sorcery, specifically, druid craft.",
       "relatedIds": []
     },
     {
@@ -90,7 +78,7 @@
         "fortress"
       ],
       "summary": "Capital city of the Adyaerion Empire.",
-      "body": "A massive fortress city that was once ruled by Torm the True, God-King of the humans. After the Second War of the Great Ones, the city would be left in the hands of the Adyaerion family who inherited his throne.",
+      "body": "A massive fortress city that was once ruled by Torm the True, God-King of the humans. After the Second War of the Great Ones, the city would be left in the hands of the Adyaerion family who inherited his throne. From there they would raise themselves to not just kings and queens, but emperors and empresses. The Adyaerions would rule the entire continent of Nivah by 983 P.D.",
       "relatedIds": []
     }
   ]
