@@ -1,0 +1,37 @@
+{
+  "regions": [
+    {
+      "id": "nivah",
+      "name": "Nivah",
+      "type": "continent",
+      "summary": "Cold northern lands of fractured kingdoms.",
+      "mapPosition": { "x": 0.42, "y": 0.18 },
+      "entries": [
+        "city-genoa",
+        "faction-westerland-federation"
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "id": "city-genoa",
+      "title": "Genoa",
+      "category": "location",
+      "regionId": "nivah",
+      "tags": ["city", "trade hub", "mountains"],
+      "summary": "A bustling metropolis and home to the first constitutional republic.",
+      "body": "Full lore text here...",
+      "relatedIds": ["faction-westerland-federation"]
+    },
+    {
+      "id": "faction-westerland-federation",
+      "title": "The Westerland Federation",
+      "category": "faction",
+      "regionId": "nivah",
+      "tags": ["politicans"],
+      "summary": "A common defense pact consisting of the city state of the Westerlands.",
+      "body": "More detailed lore...",
+      "relatedIds": ["city-genoa"]
+    }
+  ]
+}
