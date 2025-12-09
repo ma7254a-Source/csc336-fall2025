@@ -105,13 +105,22 @@ body {
   box-sizing: border-box;
 }
 
-.compendium-content {
+/*.compendium-content {
   background-color: white;
   padding: 3rem;
   border-radius: 0 0 8px 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   margin: 0;
+  box-sizing: border-box;
+}
+*/
+.compendium-content {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -253,7 +262,7 @@ body {
   font-size: 1.2rem;
 }
 
-.entry-card {
+/*.entry-card {
   background-color: var(--parchment);
   border: 2px solid var(--mist);
   border-radius: 8px;
@@ -263,7 +272,19 @@ body {
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
+}*/
+
+.entry-card {
+  background-color: var(--parchment);
+  border: 2px solid var(--mist);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
+
 
 .entry-card:hover {
   transform: translateY(-5px);
