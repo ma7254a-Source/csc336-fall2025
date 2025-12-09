@@ -223,7 +223,7 @@ body {
   background: none;
 }
 
-.entry-list {
+/*.entry-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
@@ -233,7 +233,18 @@ body {
   box-shadow: none;
   margin-top: 2rem;
   width: 100%;
+}*/
+
+.entry-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 0;
+  margin-top: 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 
 .no-entries {
   text-align: center;
